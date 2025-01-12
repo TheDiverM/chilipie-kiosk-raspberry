@@ -8,9 +8,9 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )" # Figure
 cd "$DIR"
 
 if [ "$OSTYPE" == "linux-gnu" ]; then
-  MOUNTED_BOOT_VOLUME="/media/$(whoami)/boot" # i.e. under which name is the SD card mounted under /media in Linux (Ubuntu)
+  MOUNTED_BOOT_VOLUME="/media/$(whoami)/bootfs" # i.e. under which name is the SD card mounted under /media in Linux (Ubuntu)
 elif [[ "$OSTYPE" == darwin* ]]; then
-  MOUNTED_BOOT_VOLUME="/Volumes/boot" # i.e. under which name is the SD card mounted under /Volumes on macOS
+  MOUNTED_BOOT_VOLUME="/Volumes/bootfs" # i.e. under which name is the SD card mounted under /Volumes on macOS
 else
   echo "Error: Unsupported platform $OSTYPE, sorry" && exit 1
 fi
