@@ -1,0 +1,5 @@
+# software thats needed
+ssh-keygen #.ssh/id_rsh.pub
+npm
+
+
