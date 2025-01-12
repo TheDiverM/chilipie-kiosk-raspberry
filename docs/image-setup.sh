@@ -94,6 +94,7 @@ read
 
 working "Figuring out SD card device"
 figureOutSdCard
+echo "fant kort"
 
 question "Based on the above, SD card determined to be \"$DISK\""
 echo "Should be e.g. \"$DISK_SAMPLE\""
