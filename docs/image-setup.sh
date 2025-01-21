@@ -163,7 +163,7 @@ echo "(press enter to confirm)"
 read
 
 working "Resizing the root partition"
-ssh "echo -e 'd\n2\nn\np\n2\n$START\n+${SD_SIZE_REAL}M\ny\nw\n' | sudo fdisk /dev/mmcblk0"
+# ssh "echo -e 'd\n2\nn\np\n2\n$START\n+${SD_SIZE_REAL}M\ny\nw\n' | sudo fdisk /dev/mmcblk0"
 
 working "Setting locale"
 # We want to do this as early as possible, so perl et al won't complain about misconfigured locales for the rest of the image prep
@@ -226,6 +226,9 @@ scp $(find ../home -type f)
 
 working "Setting splash screen background"
 ssh "sudo rm /usr/share/plymouth/themes/pix/splash.png && sudo ln -s /home/pi/background.png /usr/share/plymouth/themes/pix/splash.png"
+
+working "installing rpi-connect"
+ssh "sudo apt-get -y install rpi-connect"
 
 working "Installing default crontab"
 ssh "crontab /home/pi/crontab.example"
