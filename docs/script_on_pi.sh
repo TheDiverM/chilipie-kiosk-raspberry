@@ -43,9 +43,9 @@ sudo ln -fs /lib/systemd/system/getty@.service /etc/systemd/system/getty.target.
 sudo mkdir -p /etc/systemd/system/getty@tty1.service.d
 sudo mkdir -p /etc/systemd/system/getty@tty2.service.d
 sudo mkdir -p /etc/systemd/system/getty@tty3.service.d
-echo -e '[Service]\nExecStart=\nExecStart=-/sbin/agetty --autologin pi --noclear %I \$TERM\n' | sudo tee /etc/systemd/system/getty@tty1.service.d/autologin.conf
-echo -e '[Service]\nExecStart=\nExecStart=-/sbin/agetty --autologin pi --noclear %I \$TERM\n' | sudo tee /etc/systemd/system/getty@tty2.service.d/autologin.conf
-echo -e '[Service]\nExecStart=\nExecStart=-/sbin/agetty --autologin pi --noclear %I \$TERM\n' | sudo tee /etc/systemd/system/getty@tty3.service.d/autologin.conf
+echo -e '[Service]\nExecStart=\nExecStart=-/sbin/agetty --autologin pi --noclear %I xterm\n' | sudo tee /etc/systemd/system/getty@tty1.service.d/autologin.conf
+echo -e '[Service]\nExecStart=\nExecStart=-/sbin/agetty --autologin pi --noclear %I xterm\n' | sudo tee /etc/systemd/system/getty@tty2.service.d/autologin.conf
+echo -e '[Service]\nExecStart=\nExecStart=-/sbin/agetty --autologin pi --noclear %I xterm\n' | sudo tee /etc/systemd/system/getty@tty3.service.d/autologin.conf
 
 
 #setter timezone
@@ -86,8 +86,8 @@ ssh "crontab /home/pi/crontab.example"
 
 # "Making boot quieter (part 1)" # https://scribles.net/customizing-boot-up-screen-on-raspberry-pi/
 echo "Updating: $BOOT_CONFIG_TXT"
-perl -i -p0e "s/#disable_overscan=1/disable_overscan=1/g" "$BOOT_CONFIG_TXT" # "perl" is more cross-platform than "sed -i"
-echo -e "\ndisable_splash=1" >> "$BOOT_CONFIG_TXT"
+sudo perl -i -p0e "s/#disable_overscan=1/disable_overscan=1/g" "$BOOT_CONFIG_TXT" # "perl" is more cross-platform than "sed -i"
+sudo echo -e "\ndisable_splash=1" >> "$BOOT_CONFIG_TXT"
 
 
 # "Making boot quieter (part 2)" # https://scribles.net/customizing-boot-up-screen-on-raspberry-pi/

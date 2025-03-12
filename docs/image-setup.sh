@@ -201,9 +201,9 @@ ssh "sudo ln -fs /lib/systemd/system/getty@.service /etc/systemd/system/getty.ta
 ssh "sudo mkdir -p /etc/systemd/system/getty@tty1.service.d"
 ssh "sudo mkdir -p /etc/systemd/system/getty@tty2.service.d"
 ssh "sudo mkdir -p /etc/systemd/system/getty@tty3.service.d"
-ssh "echo -e '[Service]\nExecStart=\nExecStart=-/sbin/agetty --autologin pi --noclear %I \$TERM\n' | sudo tee /etc/systemd/system/getty@tty1.service.d/autologin.conf"
-ssh "echo -e '[Service]\nExecStart=\nExecStart=-/sbin/agetty --autologin pi --noclear %I \$TERM\n' | sudo tee /etc/systemd/system/getty@tty2.service.d/autologin.conf"
-ssh "echo -e '[Service]\nExecStart=\nExecStart=-/sbin/agetty --autologin pi --noclear %I \$TERM\n' | sudo tee /etc/systemd/system/getty@tty3.service.d/autologin.conf"
+ssh "echo -e '[Service]\nExecStart=\nExecStart=-/sbin/agetty --autologin pi --noclear %I xterm\n' | sudo tee /etc/systemd/system/getty@tty1.service.d/autologin.conf"
+ssh "echo -e '[Service]\nExecStart=\nExecStart=-/sbin/agetty --autologin pi --noclear %I xterm\n' | sudo tee /etc/systemd/system/getty@tty2.service.d/autologin.conf"
+ssh "echo -e '[Service]\nExecStart=\nExecStart=-/sbin/agetty --autologin pi --noclear %I xterm\n' | sudo tee /etc/systemd/system/getty@tty3.service.d/autologin.conf"
 
 working "Setting timezone"
 ssh "(echo '$TIMEZONE' | sudo tee /etc/timezone) && sudo dpkg-reconfigure --frontend noninteractive tzdata"
